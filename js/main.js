@@ -6,7 +6,7 @@ var incidentsMap;
 loadData();
 
 function loadData() {
-    d3.csv("data/stage3.csv", function(error, data){
+    d3.csv("data/stage3-min.csv", function(error, data){
         allData = data;
         createVis();
     });
