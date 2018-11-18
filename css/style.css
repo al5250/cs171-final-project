@@ -1,7 +1,7 @@
 /* custom css rules */
 
 /*body {*/
-	/*font-family: 'Raleway', sans-serif;*/
+/*font-family: 'Raleway', sans-serif;*/
 /*}*/
 
 /*h1 {*/
@@ -354,5 +354,15 @@ a:hover {
 }
 .arrow:after {
 	transform: rotate(-45deg);
+}
 
+/* Incidents Map */
+
+.country-border {
+	fill: gainsboro;
+	stroke: #000000;
+	stroke-width: 0.5px;
+	pointer-events: all;
+	stroke-linejoin: round;
+	stroke-linecap: round;
 }
