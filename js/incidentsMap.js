@@ -36,16 +36,23 @@ IncidentsMap.prototype.initVis = function(){
         .append("g")
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-    var projection = d3.geoAlbersUsa()
+    vis.projection = d3.geoAlbersUsa()
         .translate([vis.width / 2, vis.height / 2]);
 
     vis.path = d3.geoPath()
-        .projection(projection);
+        .projection(vis.projection);
+
+    vis.radius = d3.scaleLinear()
+        .range([1, 15]);
 
     d3.json('data/us.topo.json', function(err, data) {
         vis.usData = topojson.feature(data, data.objects.states).features
         vis.wrangleData();
+
     });
+
+
+
 };
 
 /*
@@ -55,7 +62,15 @@ IncidentsMap.prototype.initVis = function(){
 IncidentsMap.prototype.wrangleData = function(){
     var vis = this;
 
-    vis.displayData = vis.usData;
+    vis.displayData = vis.allData.filter(function(d) {
+        return d.latitude !== 0 && d.longitude !== 0 && d.casualties !== 0;
+    });
+
+    vis.radius.domain([d3.min(vis.displayData, function(d) {
+        return d.casualties;
+    }), d3.max(vis.displayData, function(d) {
+        return d.casualties;
+    })]);
 
     // Update the visualization
     vis.updateVis();
@@ -70,11 +85,40 @@ IncidentsMap.prototype.wrangleData = function(){
 IncidentsMap.prototype.updateVis = function(){
     var vis = this;
 
-    // Render the U.S. by using the path generator
+    console.log(vis.displayData);
+
     vis.svg.selectAll("path")
-        .data(vis.displayData)
+        .data(vis.usData)
         .enter().append("path")
         .attr("class", "country-border")
         .attr("d", vis.path);
+
+    vis.svg.selectAll("circle")
+        .data(vis.displayData)
+        .enter()
+        .append("circle")
+        .attr("class", "node")
+        .attr("r", function(d) {
+            return vis.radius(d.casualties);
+        })
+        .attr("transform", function(d) {
+            if (vis.projection([d.longitude, d.latitude]) == null) {
+                console.log(d);
+            }
+            return "translate(" + vis.projection([d.longitude, d.latitude]) + ")";
+        })
+        .style("fill", "gray")
+        .style("stroke", "black");
+
+    /* vis.svg.selectAll("circle")
+        .data(vis.allData)
+        .enter()
+        .append("circle")
+        .attr("class", "node")
+        .attr("r", 2)
+        .attr("transform", function(d) {
+            return "translate(" + vis.projection([d.longitude, d.latitude]) + ")";
+        })
+        .style("fill", "black"); */
 
 };
