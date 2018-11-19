@@ -23,7 +23,7 @@ IncidentsMap = function(_parentElement, _data){
 IncidentsMap.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 40, right: 0, bottom: 60, left: 60 };
+    vis.margin = { top: 40, right: 100, bottom: 60, left: 0 };
 
     vis.width = 1000 - vis.margin.left - vis.margin.right;
     vis.height = 800 - vis.margin.top - vis.margin.bottom;
@@ -44,6 +44,18 @@ IncidentsMap.prototype.initVis = function(){
 
     vis.radius = d3.scaleLinear()
         .range([1, 15]);
+
+    //Define quantize scale to sort data values into buckets of color
+    vis.color = d3.scaleQuantize();
+
+    // Legend
+    vis.svg.append("g")
+        .attr("class", "legendQuant")
+        .attr("transform", "translate(800,450)");
+
+    vis.legend = d3.legendColor()
+        .labelFormat(d3.format(".2f"));
+
 
     d3.json('data/us.topo.json', function(err, data) {
         vis.usData = topojson.feature(data, data.objects.states).features
@@ -86,6 +98,25 @@ IncidentsMap.prototype.updateVis = function(){
     var vis = this;
 
     console.log(vis.displayData);
+    console.log(d3.max(vis.displayData, function(d) { return d.casualties; })
+    )
+
+    vis.color.domain([
+        d3.min(vis.displayData, function(d) { return d.casualties; }),
+        d3.max(vis.displayData, function(d) { return d.casualties; })
+    ]);
+    vis.color.range(["#ca0020","#f4a582","#bababa", "#404040"]);
+
+    // Update legend
+    var format = d3.format("d");
+    vis.legend
+        .labelFormat(format)
+        .labels(d3.legendHelpers.thresholdLabels)
+        .scale(vis.color);
+
+    vis.svg.select(".legendQuant")
+        .call(vis.legend);
+
 
     vis.svg.selectAll("path")
         .data(vis.usData)
@@ -107,8 +138,9 @@ IncidentsMap.prototype.updateVis = function(){
             }
             return "translate(" + vis.projection([d.longitude, d.latitude]) + ")";
         })
-        .style("fill", "gray")
-        .style("stroke", "black");
+        .style("fill", function(d) {
+            return vis.color(d.casualties);
+        });
 
     /* vis.svg.selectAll("circle")
         .data(vis.allData)
