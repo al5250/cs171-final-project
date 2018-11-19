@@ -366,3 +366,8 @@ a:hover {
 	stroke-linejoin: round;
 	stroke-linecap: round;
 }
+
+#timeplot .legend-text {
+	alignment-baseline: middle;
+	font-size: 10pt;
+}
