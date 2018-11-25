@@ -1,6 +1,6 @@
 allData = [];
 
-var incidentsMap, timeplot;
+var incidentsMap, timeplot, memoriam;
 var dataset = "data/stage3-min.csv";
 
 // Load data
@@ -18,6 +18,20 @@ function loadData() {
             d.n_killed = +d.n_killed;
             d.casualties =  d.n_killed;
             d.date = parseDate(d.date);
+            d.participant_age_dict = {};
+            if (d.participant_age !== "") {
+                (d.participant_age.split('||')).map(function (e) {
+                    var b = e.split('::');
+                    d.participant_age_dict[+b[0]] = +b[1];
+                });
+            }
+            d.participant_status_dict = {};
+            if (d.participant_status !== "") {
+                (d.participant_status.split('||')).map(function (e) {
+                    var b = e.split('::');
+                    d.participant_status_dict[+b[0]] = b[1];
+                });
+            }
         });
         createVis(data);
     });
@@ -29,5 +43,6 @@ function createVis(data) {
 
     incidentsMap = new IncidentsMap("incidents-map", data);
     timeplot = new TimePlot("timeplot", data);
+    memoriam = new Memoriam("memoriam", data);
 
 }

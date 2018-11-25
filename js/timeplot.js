@@ -131,11 +131,6 @@ TimePlot.prototype.wrangleData = function(){
         d3.max(vis.displayData, function(d) {return d.value.n_injured})
     ]);
 
-    console.log([
-        vis.x(d3.min(vis.displayData, function(d) {return d.key})),
-        vis.x(d3.max(vis.displayData, function(d) {return d.key}))
-    ]);
-
 
     // Update the visualization
     vis.updateVis();
