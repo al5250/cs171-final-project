@@ -30,10 +30,19 @@
 <section class="panel map" data-section-name="map">
     <div class="inner">
         <div class="content">
-            <h2>Map</h2>
+            <h2>Instances of Lethal Shootings in America</h2>
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-sm-2" id="sliderlabels">
+                        <span>Filter by Top:</span><p id="value1"></p><span>Lethal Incidents</span>
+                    </div>
+                    <div class="col-sm">
+                        <div id="slider1"></div>
+                    </div>
+                </div>
+            </div>
             <div id="incidents-map"></div>
-            <p>The following is a map of incidents of gun violence found in our dataset, with each circle representing one shooting... Hover over the circles to see more information.</p>
-            <p>[insert interactive map here]</p>
+            <p>Above is a map of incidents of gun violence found in our dataset, with each circle representing one shooting and the size corresponding to number killed.</p>
         </div>
     </div>
 </section>
@@ -78,6 +87,7 @@
 <script src="js/d3-tip.js"></script>
 <script src="js/jquery.easing.min.js"></script>
 <script src="js/d3-legend.min.js"></script>
+<script src="js/d3.slider.js"></script>
 
 <!-- Visualization files -->
 <script src="js/incidentsMap.js"></script>

@@ -1,15 +1,16 @@
 allData = [];
 
-var incidentsMap;
+var incidentsMap, timeplot;
+var dataset = "data/stage3-min.csv";
 
 // Load data
 loadData();
 
 // Date parser to convert strings to date objects
-var parseDate = d3.timeParse("%m/%d/%Y");
+var parseDate = (dataset === "data/stage3-min.csv")? d3.timeParse("%m/%d/%Y") : d3.timeParse("%Y-%m-%d");
 
 function loadData() {
-    d3.csv("data/stage3.csv", function(error, data){
+    d3.csv(dataset, function(error, data){
         data.forEach(function(d) {
             d.latitude = +d.latitude;
             d.longitude = +d.longitude;
