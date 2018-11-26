@@ -38,6 +38,15 @@ Memoriam.prototype.initVis = function(){
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")")
         .attr("class", "bubble");
 
+    vis.tool_tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<strong>Age:</strong> <span style='color:red'>" + d.data.age + "</span>";
+        });
+    vis.svg.call(vis.tool_tip);
+
+
     this.allData.forEach(function(d, i) {
         if (d.n_killed > 0) {
             for (var k in d.participant_status_dict) {
@@ -132,15 +141,32 @@ Memoriam.prototype.updateVis = function(){
         })
         .append("g")
         .attr("class", "node")
-        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; })
-
+        .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
 
     vis.deadcircles = vis.node.append("circle")
-        .attr("r", function(d) {
-            return d.r; })
-        .attr("fill", "black");
+        .attr("r", function(d) { return d.r; })
+        .attr("fill", "black")
+        .on('mouseover', function(d) {
+            vis.tool_tip.attr('class', 'd3-tip animate').show(d)
+        })
+        .on('mouseout', function(d) {
+            vis.tool_tip.attr('class', 'd3-tip').show(d)
+            vis.tool_tip.hide()
+        })
+        // .on("mouseover", function(d) {
+        //     console.log("hi");
+        //     vis.tooltip.text("Age: " + d.data.age);
+        //     vis.tooltip.style("visibility", "visible");
+        // })
+        // .on("mousemove", function() {
+        //     return vis.tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
+        // })
+        // .on("mouseout", function(){return vis.tooltip.style("visibility", "hidden");});
+
+    // vis.deadcircles = vis.node.append("circle")
+    //     .attr("r", function(d) {
+    //         return d.r; })
+    //     .attr("fill", "black");
 
     d3.select(self.frameElement).style("height", vis.diameter + "px");
-
-
 };
