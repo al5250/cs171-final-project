@@ -61,25 +61,55 @@ table {
 
 body {
 	font-size:62.5%;
-	font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	/*font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
+	font-family: 'Open Sans', sans-serif;
 	color:#808080;
 }
+
 h1 {
 	font-size:8em;
 	color:#555;
-	font-family:"Lato", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	/*font-family:"Lato", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
+	font-family: 'Open Sans', sans-serif;
+
 }
+
 h2 {
-	font-family:"Lato", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+	/*font-family:"Lato", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
+	font-family: 'Open Sans', sans-serif;
 }
+
+p {
+	font-size: 14px;
+}
+
+ul {
+	display: block;
+	/*list-style-type: disc;*/
+	/*margin-top: 1em;*/
+	margin-bottom: 1 em;
+	margin-left: 10;
+	margin-right: 10;
+	/*padding-left: 40px;*/
+	font-size: 35px;
+}
+
+li {
+	padding: 40px;
+	padding-right: 10px;
+
+}
+
 .inner {
 	width:1270px;
 	margin:0 auto;
 
 	position: relative;
 	height:100%;
-	padding-bottom: 40px;
-	padding-top: 40px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
 }
 .panel {
 	position: relative;
@@ -95,7 +125,7 @@ h2 {
 	line-height:1.8;
 }
 .panel .content h2 {
-	margin-bottom:20px;
+	margin-bottom:30px;
 	font-size:3em;
 	color:#555;
 }
@@ -119,7 +149,7 @@ h2 {
 .pagination {
 	display: block;
 	position:fixed;
-	right:20px;
+	right:10px;
 	top: 50%;
 	transform: translateY(-50%);
 
@@ -442,3 +472,28 @@ a:hover {
 	alignment-baseline: middle;
 	font-size: 10pt;
 }
+
+#slideshow {
+	margin: 50px auto;
+	/*position: relative;*/
+	width: 240px;
+	height: 240px;
+	padding: 10px;
+	/*box-shadow: 0 0 20px rgba(0,0,0,0.4);*/
+}
+
+#slideshow > div {
+	/*position: absolute;*/
+	top: 10px;
+	left: 10px;
+	right: 10px;
+	bottom: 10px;
+}
+
+/*#carousel-example-generic {*/
+	/*display: center;*/
+/*}*/
+
+/*carousel slide {*/
+	/*padding: 20px;*/
+/*}*/
