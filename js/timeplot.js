@@ -4,10 +4,11 @@
  * @param _data				-- The entire gun violence dataset
  */
 
-TimePlot = function(_parentElement, _data){
+TimePlot = function(_parentElement, _data, _eventHandler){
     this.parentElement = _parentElement;
     this.allData = _data;
     this.displayData = []; // see data wrangling
+    this.eventHandler = _eventHandler;
 
     this.initVis();
 };
@@ -95,7 +96,23 @@ TimePlot.prototype.initVis = function(){
         .attr('class', 'legend-text')
         .text('Injured');
 
-    console.log(vis.allData);
+    // Initialize brushing component
+    vis.currentBrushRegion = null;
+    vis.brush = d3.brushX()
+        .extent([[0,0],[vis.width, vis.height]])
+        .on("brush", function(){
+            // User just selected a specific region
+            vis.currentBrushRegion = d3.event.selection;
+            vis.currentBrushRegion = vis.currentBrushRegion.map(vis.x.invert);
+
+            // 3. Trigger the event 'selectionChanged' of our event handler
+            $(vis.eventHandler).trigger("selectionChanged", vis.currentBrushRegion);
+        });
+
+
+    // Append brush component here
+    vis.brushGroup = vis.svg.append("g")
+        .attr("class", "brush");
 
     vis.wrangleData();
 
@@ -131,7 +148,6 @@ TimePlot.prototype.wrangleData = function(){
         d3.max(vis.displayData, function(d) {return d.value.n_injured})
     ]);
 
-
     // Update the visualization
     vis.updateVis();
 };
@@ -144,6 +160,9 @@ TimePlot.prototype.wrangleData = function(){
 
 TimePlot.prototype.updateVis = function(){
     var vis = this;
+
+    // Call brush component here
+    vis.brushGroup.call(vis.brush);
 
     // Draw circles for killed
     var circlesKilled = vis.svg.selectAll('.circle-killed')

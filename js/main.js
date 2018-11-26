@@ -41,8 +41,17 @@ function createVis(data) {
 
     // TO-DO: Instantiate visualization objects here
 
+    console.log(data);
     incidentsMap = new IncidentsMap("incidents-map", data);
-    timeplot = new TimePlot("timeplot", data);
     memoriam = new Memoriam("memoriam", data);
+
+    // Create event handler
+    var eventHandler = {};
+    timeplot = new TimePlot("timeplot", data, eventHandler);
+    barplot = new BarPlot("barplot", data);
+
+    $(eventHandler).bind("selectionChanged", function(event, rangeStart, rangeEnd){
+        barplot.onSelectionChange(rangeStart, rangeEnd);
+    });
 
 }
