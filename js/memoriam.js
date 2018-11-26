@@ -24,9 +24,9 @@ Memoriam = function(_parentElement, _data){
 Memoriam.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 0, right: 100, bottom: 60, left: 0 };
+    vis.margin = { top: 0, right: 100, bottom: 100, left: 0 };
 
-    vis.diameter = 550;
+    vis.diameter = 500;
 
 
     // SVG drawing area
@@ -130,8 +130,10 @@ Memoriam.prototype.updateVis = function(){
 
         //bubbles needs very specific format, convert data to this.
 
+    var maxage = d3.max(vis.displayData, function(d) { return d.age});
+
     var root = d3.hierarchy(vis.testData)
-        .sum(function(d) { return d.age; });
+        .sum(function(d) { return maxage - d.age; });
 
 
     vis.node = vis.svg.selectAll(".node")

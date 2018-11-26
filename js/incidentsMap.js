@@ -23,10 +23,10 @@ IncidentsMap = function(_parentElement, _data){
 IncidentsMap.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 0, right: 100, bottom: 60, left: 0 };
+    vis.margin = { top: 80, right: 100, bottom: 80, left: 0 };
 
     vis.width = 1000 - vis.margin.left - vis.margin.right;
-    vis.height = 700 - vis.margin.top - vis.margin.bottom;
+    vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
 
     // SVG drawing area
@@ -61,7 +61,7 @@ IncidentsMap.prototype.initVis = function(){
     // Legend
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(820,450)");
+        .attr("transform", "translate(820,250)");
 
     vis.legend = d3.legendSize()
         .labelFormat(d3.format("d"))
