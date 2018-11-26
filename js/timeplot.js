@@ -24,7 +24,7 @@ TimePlot.prototype.initVis = function(){
 
     vis.margin = { top: 40, right: 60, bottom: 60, left: 100 };
 
-    vis.width = 800 - vis.margin.left - vis.margin.right;
+    vis.width = 600 - vis.margin.left - vis.margin.right;
     vis.height = 400 - vis.margin.top - vis.margin.bottom;
 
 
@@ -67,24 +67,24 @@ TimePlot.prototype.initVis = function(){
         .attr('class', 'path-line')
         .attr('id', 'line-killed')
         .attr('fill', 'none')
-        .attr('stroke', 'black');
+        .attr('stroke', '#B22222');
     vis.svg.append('path')
         .attr('class', 'path-line')
         .attr('id', 'line-injured')
         .attr('fill', 'none')
-        .attr('stroke', 'blue');
+        .attr('stroke', 'black');
 
     // Add legend
     vis.svg.append('circle')
         .attr('cx', 100)
         .attr('cy', 20)
         .attr('r', 4)
-        .attr('fill', 'black');
+        .attr('fill', '#B22222');
     vis.svg.append('circle')
         .attr('cx', 100)
         .attr('cy', 40)
         .attr('r', 4)
-        .attr('fill', 'blue');
+        .attr('fill', 'black');
     vis.svg.append('text')
         .attr('x', 110)
         .attr('y', 20)
@@ -173,7 +173,8 @@ TimePlot.prototype.updateVis = function(){
         .merge(circlesKilled)
         .attr('cx', function(d) {return vis.x(d.key)})
         .attr('cy', function(d) {return vis.y(d.value.n_killed)})
-        .attr('r', 4);
+        .attr('r', 4)
+        .attr('fill', '#C22222');
 
     // Draw circles for injured
     var circlesInjured = vis.svg.selectAll('.circle-injured')
@@ -185,7 +186,7 @@ TimePlot.prototype.updateVis = function(){
         .attr('cx', function(d) {return vis.x(d.key)})
         .attr('cy', function(d) {return vis.y(d.value.n_injured)})
         .attr('r', 4)
-        .attr('fill', 'blue');
+        .attr('fill', 'black');
 
     // Draw axes
     vis.svg.select('.x-axis')

@@ -64,6 +64,7 @@ time, mark, audio, video {
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
+	horiz-align: center;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -128,7 +129,8 @@ ul {
 }
 
 li {
-	padding: 40px;
+	padding-bottom: 40px;
+	padding-top: 20px;
 	padding-right: 10px;
 
 }
@@ -146,7 +148,7 @@ li {
 }
 .panel {
 	position: relative;
-	background-color: #FFF;
+	background-color: #f0f2f4;
 }
 .home {
 	overflow: hidden;
@@ -164,6 +166,7 @@ li {
 }
 .panel.home {
 	background-color:#f0f2f4;
+	/*background-color:#282828;*/
 	border-bottom:1px solid #ddd;
 }
 .home .header-content {
@@ -508,19 +511,23 @@ a:hover {
 
 #slideshow {
 	margin: 50px auto;
-	/*position: relative;*/
+	position: absolute;
 	width: 240px;
-	height: 240px;
-	padding: 10px;
+	height: 100px;
+	padding: 0px;
+	text-align: center;
+	align: center;
 	/*box-shadow: 0 0 20px rgba(0,0,0,0.4);*/
 }
 
 #slideshow > div {
-	/*position: absolute;*/
-	top: 10px;
+	position: absolute;
+	/*top: 10px;*/
 	left: 10px;
 	right: 10px;
-	bottom: 10px;
+	text-align: center;
+	align: center;
+	/*bottom: 10px;*/
 }
 
 /*#carousel-example-generic {*/

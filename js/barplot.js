@@ -24,7 +24,7 @@ BarPlot.prototype.initVis = function(){
 
     vis.margin = { top: 40, right: 60, bottom: 60, left: 100 };
 
-    vis.width = 500 - vis.margin.left - vis.margin.right;
+    vis.width = 600 - vis.margin.left - vis.margin.right;
     vis.height = 400 - vis.margin.top - vis.margin.bottom;
 
 
@@ -144,7 +144,7 @@ BarPlot.prototype.updateVis = function(){
         .attr('y', function(d) {return vis.y(d)})
         .attr('width', 12)
         .attr('height', function(d) {return vis.height - vis.y(d)})
-        .attr('fill', 'black');
+        .attr('fill', '#B22222\t');
 
     // Draw rectangles for injured
     var rects = vis.svg.selectAll('.rect-injured')
@@ -164,7 +164,7 @@ BarPlot.prototype.updateVis = function(){
         .attr('y', function(d) {return vis.y(d)})
         .attr('width', 12)
         .attr('height', function(d) {return vis.height - vis.y(d)})
-        .attr('fill', 'blue');
+        .attr('fill', 'black');
 
 };
 
