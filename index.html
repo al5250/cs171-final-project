@@ -138,17 +138,23 @@
         <div class="content">
             <h2>Who are the victims?</h2>
             <p>The following is a memoriam of victims of the shootings depicted above. Toggle and time filter to see deaths over time and hover for more information.</p>
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-sm-2" id="sliderlabels2">
-                        <span>Dead by Age:</span><p id="value2"></p>
-                    </div>
-                    <div class="col-sm">
-                        <div id="slider2"></div>
-                    </div>
+            <div class="row align-items-start top-20">
+                <div class="col-sm-3">
+                    <div>Dead by Age: <span class="memoriam-label" id="value2"></span></div>
+                </div>
+                <div class="col-sm-6">
+                    <div id="slider2"></div>
+                </div>
+                <div class="col-sm-3">
+                    <div>Deaths: <span class="memoriam-label" id="total-deaths"></span></div>
                 </div>
             </div>
-            <div id="memoriam"></div>
+            <div class="row">
+                <div class="col-sm-6 offset-sm-3">
+                    <button id="memoriam-button" class="btn btn-dark center" type="button" onclick="memoriam.playMemoriam()">Play</button>
+                    <div id="memoriam"></div>
+                </div>
+            </div>
         </div>
     </div>
 </section>

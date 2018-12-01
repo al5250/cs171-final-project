@@ -1,6 +1,5 @@
 allData = [];
 
-var incidentsMap, timeplot, memoriam;
 var dataset = "data/stage3-min.csv";
 
 // Load data
@@ -30,6 +29,13 @@ function loadData() {
                 (d.participant_status.split('||')).map(function (e) {
                     var b = e.split('::');
                     d.participant_status_dict[+b[0]] = b[1];
+                });
+            }
+            d.participant_name_dict = {};
+            if (d.participant_name !== "") {
+                (d.participant_name.split('||')).map(function (e) {
+                    var b = e.split('::');
+                    d.participant_name_dict[+b[0]] = b[1];
                 });
             }
         });

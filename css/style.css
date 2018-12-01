@@ -494,6 +494,14 @@ a:hover {
 	font-size: 15px;
 }
 
+#slider2 {
+	margin-top: 2px;
+}
+
+.top-20 {
+	padding-top: 20px;
+}
+
 #value1 {
 	font-size: 18px;
 	font-weight: bold;
@@ -570,4 +578,21 @@ a:hover {
 .d3-tip.animate {
 	animation: bounceIn 0.2s ease-out;
 	-webkit-animation: bounceIn 0.2s ease-out;
+}
+
+#memoriam-button {
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+
+.center {
+	position: relative;
+	left: 50%;
+	transform: translate(-50%, 0);
+}
+
+.memoriam-label {
+	font-size: 30px;
+	color: #E50000;
+	font-weight: 600;
 }
