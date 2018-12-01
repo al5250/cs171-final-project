@@ -72,12 +72,26 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
 body {
 	line-height: 1;
 }
+
 ol, ul {
 	list-style: none;
 }
+
+/*ul.no_bullet {*/
+	/*list-style-type: none;*/
+/*}*/
+
+/*ul.leaf {*/
+	/*background: url('/img/gun.jpg') no-repeat left top;*/
+	/*height: 54px;*/
+	/*padding-left: 44px;*/
+	/*padding-top: 3px;*/
+/*}*/
+
 blockquote, q {
 	quotes: none;
 }
@@ -96,7 +110,8 @@ table {
 body {
 	font-size:62.5%;
 	/*font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: 'Raleway', sans-serif;
 	color:#808080;
 }
 
@@ -104,13 +119,18 @@ h1 {
 	font-size:8em;
 	color:#555;
 	/*font-family:"Lato", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
-	font-family: 'Open Sans', sans-serif;
-
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: 'Raleway', sans-serif;
 }
 
 h2 {
 	/*font-family:"Lato", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
-	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Open Sans', sans-serif;*/
+	font-family: 'Raleway', sans-serif;
+}
+
+p1 {
+	font-size: 24px;
 }
 
 p {
@@ -122,17 +142,22 @@ ul {
 	/*list-style-type: disc;*/
 	/*margin-top: 1em;*/
 	margin-bottom: 1 em;
-	margin-left: 10;
-	margin-right: 10;
+	margin-left: 15px;
+	margin-right: 10px;
 	/*padding-left: 40px;*/
 	font-size: 35px;
 }
 
 li {
-	padding-bottom: 40px;
+	padding-bottom: 35px;
 	padding-top: 20px;
 	padding-right: 10px;
+}
 
+li2 {
+	/*padding-bottom: 50px;*/
+	padding-top: 5px;
+	padding-right: 10px;
 }
 
 .inner {
@@ -144,7 +169,7 @@ li {
 	padding-bottom: 20px;
 	padding-top: 20px;
 	padding-left: 20px;
-	padding-right: 20px;
+	padding-right: 30px;
 }
 .panel {
 	position: relative;
@@ -175,9 +200,34 @@ li {
 	top:120px;
 	width:25%;
 }
+
+.footer {
+	position: absolute;
+	left:50px;
+	bottom:50px;
+}
+
+.footer-left {
+	position: absolute;
+	left:50px;
+	bottom:30px;
+}
+
+.footer-right {
+	position: absolute;
+	right:50px;
+	bottom:30px;
+}
+
+
+/*.background-img {*/
+	/*position: relative;*/
+	/*!*z-index: -1;*!*/
+/*}*/
+
 .home .gallery0 {
 	position: absolute;
-	left:30%;
+	left:33%;
 	top:80px;
 	width:60%;
 }
@@ -205,12 +255,12 @@ li {
 }
 .pagination a .hover-text {
 	position:absolute;
-	right:15px;
-	top:7px;
+	right:10px;
+	/*top:7px;*/
 	opacity:0;
 	-webkit-transition: opacity 0.5s ease;
 	transition: opacity 0.5s ease;
-	padding-right: 15px;
+	padding-right: 10px;
 }
 .pagination a:hover .hover-text {
 	opacity: 1;
@@ -510,33 +560,49 @@ a:hover {
 }
 
 #slideshow {
-	margin: 50px auto;
-	position: absolute;
-	width: 240px;
+	/*margin: 50px auto;*/
+	position: relative;
+	width: 200px;
 	height: 100px;
-	padding: 0px;
-	text-align: center;
 	align: center;
 	/*box-shadow: 0 0 20px rgba(0,0,0,0.4);*/
 }
 
-#slideshow > div {
-	position: absolute;
-	/*top: 10px;*/
-	left: 10px;
-	right: 10px;
-	text-align: center;
-	align: center;
-	/*bottom: 10px;*/
+.col-md-6 {
+	align-content: center;
 }
 
-/*#carousel-example-generic {*/
-	/*display: center;*/
-/*}*/
+.video-container {
+	margin-left: 20px;
+	margin-top: 30px;
+	align-content: center;
+}
 
-/*carousel slide {*/
-	/*padding: 20px;*/
-/*}*/
+#video > div {
+	position: absolute;
+	text-align: center;
+	align: center;
+	width: 540px;
+	height: 315px;
+	padding-top: 5px;
+	box-shadow: 0 0 20px rgba(145, 27, 27, 0.8);
+}
+
+.slideshow-container {
+	margin-right: 30px;
+	margin-top: 30px;
+	align-content: center;
+}
+
+#slideshow > div {
+	position: absolute;
+	text-align: center;
+	align: center;
+	width: 540px;
+	height: 315px;
+	padding-top: 5px;
+	box-shadow: 0 0 20px rgba(145, 27, 27, 0.8);
+}
 
 /* Memoriam */
 .d3-tip {
