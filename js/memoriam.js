@@ -26,7 +26,7 @@ Memoriam.prototype.initVis = function(){
 
     vis.margin = { top: 0, right: 100, bottom: 100, left: 0 };
 
-    vis.diameter = 400;
+    vis.diameter = 420;
 
 
     // SVG drawing area
@@ -84,8 +84,6 @@ Memoriam.prototype.initVis = function(){
         vis.total_deaths.push(vis.total_deaths[i-1] + (i in deaths_dict ? deaths_dict[i] : 0));
     }
 
-    console.log(vis.displayData);
-
     vis.userval = 0;
 
     vis.slider2 = d3.sliderHorizontal()
@@ -122,7 +120,7 @@ Memoriam.prototype.wrangleData = function(){
 
     vis.group2 = d3.select('div#slider2').append('svg')
         .attr('width', 500)
-        .attr('height', 100)
+        .attr('height', 75)
         .attr("class", "center")
         .append('g')
         .attr('transform', 'translate(30,30)');
@@ -221,7 +219,7 @@ Memoriam.prototype.playMemoriam = function() {
                 wait = 500;
             }
             else {
-                wait = 100;
+                wait = 80;
             }
             $("#value2").text(val);
             $("#total-deaths").text(vis.total_deaths[val]);

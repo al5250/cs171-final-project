@@ -39,7 +39,7 @@ IncidentsMap.prototype.initVis = function(){
 
     vis.projection = d3.geoAlbersUsa()
         .translate([vis.width / 2, vis.height / 2])
-        .scale(1000);
+        .scale(990);
 
     vis.path = d3.geoPath()
         .projection(vis.projection);
@@ -113,7 +113,7 @@ IncidentsMap.prototype.wrangleData = function(){
 
     vis.group1 = d3.select('div#slider1').append('svg')
         .attr('width', 500)
-        .attr('height', 100)
+        .attr('height', 80)
         .append('g')
         .attr('transform', 'translate(30,30)');
 
