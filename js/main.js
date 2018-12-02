@@ -60,4 +60,6 @@ function createVis(data) {
         barplot.onSelectionChange(rangeStart, rangeEnd);
     });
 
+    stackedAreaChart = new StackedAreaChart("stackedareachart", data);
+
 }
