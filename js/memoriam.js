@@ -54,7 +54,7 @@ Memoriam.prototype.initVis = function(){
             for (var k in d.participant_status_dict) {
                 if (d.participant_status_dict[k] === "Killed") {
                     var age = k in d.participant_age_dict ? d.participant_age_dict[k] : -1;
-                    var name = k in d.participant_name_dict ? d.participant_name_dict[k] : "";
+                    var name = k in d.participant_name_dict ? d.participant_name_dict[k] : "Unknown";
 
                     if (age > 0) {
                         if (age in deaths_dict) deaths_dict[age] += 1;

@@ -25,7 +25,7 @@ IncidentsMap.prototype.initVis = function(){
 
     vis.margin = { top: 80, right: 100, bottom: 80, left: 0 };
 
-    vis.width = 1000 - vis.margin.left - vis.margin.right;
+    vis.width = 900 - vis.margin.left - vis.margin.right;
     vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
 
@@ -61,7 +61,7 @@ IncidentsMap.prototype.initVis = function(){
     // Legend
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(820,250)");
+        .attr("transform", "translate(720,250)");
 
     vis.legend = d3.legendSize()
         .labelFormat(d3.format("d"))
@@ -73,6 +73,7 @@ IncidentsMap.prototype.initVis = function(){
         .titleWidth(200);
 
     d3.json('data/us.topo.json', function(err, data) {
+        console.log(data);
         vis.usData = topojson.feature(data, data.objects.states).features;
         vis.wrangleData();
 
@@ -136,11 +137,21 @@ IncidentsMap.prototype.updateVis = function(){
     vis.svg.select(".legend")
         .call(vis.legend);
 
+    function stateclick(d) {
+        d3.select("table").style("display", "table");
+        d3.select("#state")
+            .text(d.id);
+
+    }
+
+    console.log(vis.usData);
+
     vis.svg.selectAll("path")
         .data(vis.usData)
         .enter().append("path")
         .attr("class", "country-border")
-        .attr("d", vis.path);
+        .attr("d", vis.path)
+        .on("click", stateclick);
 
     var circles = vis.svg.selectAll(".node")
         .data(vis.displayData, function(d) { return d.incident_id; });
