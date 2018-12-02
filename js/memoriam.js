@@ -26,7 +26,7 @@ Memoriam.prototype.initVis = function(){
 
     vis.margin = { top: 0, right: 100, bottom: 100, left: 0 };
 
-    vis.diameter = 400;
+    vis.diameter = 420;
 
 
     // SVG drawing area
@@ -54,7 +54,7 @@ Memoriam.prototype.initVis = function(){
             for (var k in d.participant_status_dict) {
                 if (d.participant_status_dict[k] === "Killed") {
                     var age = k in d.participant_age_dict ? d.participant_age_dict[k] : -1;
-                    var name = k in d.participant_name_dict ? d.participant_name_dict[k] : "";
+                    var name = k in d.participant_name_dict ? d.participant_name_dict[k] : "Unknown";
 
                     if (age > 0) {
                         if (age in deaths_dict) deaths_dict[age] += 1;
@@ -81,8 +81,6 @@ Memoriam.prototype.initVis = function(){
     for (var i = 1; i <= vis.maxage; i++) {
         vis.total_deaths.push(vis.total_deaths[i-1] + (i in deaths_dict ? deaths_dict[i] : 0));
     }
-
-    console.log(vis.displayData);
 
     vis.userval = 0;
 
@@ -219,7 +217,7 @@ Memoriam.prototype.playMemoriam = function() {
                 wait = 500;
             }
             else {
-                wait = 100;
+                wait = 80;
             }
             $("#value2").text(val);
             $("#total-deaths").text(vis.total_deaths[val]);
