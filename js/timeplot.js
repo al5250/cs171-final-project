@@ -22,10 +22,10 @@ TimePlot = function(_parentElement, _data, _eventHandler){
 TimePlot.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 40, right: 60, bottom: 60, left: 100 };
+    vis.margin = { top: 50, right: 60, bottom: 50, left: 100 };
 
     vis.width = 600 - vis.margin.left - vis.margin.right;
-    vis.height = 400 - vis.margin.top - vis.margin.bottom;
+    vis.height = 500 - vis.margin.top - vis.margin.bottom;
 
 
     // SVG drawing area

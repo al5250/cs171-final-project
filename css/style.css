@@ -129,22 +129,57 @@ h2 {
 	font-family: 'Raleway', sans-serif;
 }
 
-p1 {
-	font-size: 24px;
-}
-
 p {
 	font-size: 14px;
 }
 
+p1 {
+	font-size: 24px;
+}
+
+.text p {
+	font-size: 30px;
+	padding: 30px;
+	padding-bottom: 10px;
+}
+
+.text p1 {
+	font-size: 24px;
+	padding-left: 75%;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	text-align: right;
+}
+
+.subtitle p {
+	font-size: 24px;
+}
+
+.quote p {
+	font-size: 30px;
+	align-content: center;
+	align-text: center;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 60px;
+	font-weight: bold;
+	text-shadow: 0 0 4px black;
+}
+
+.subquote p {
+	font-size: 20px;
+	align-text: right;
+	padding-left: 150px;
+	padding-right: 50px;
+	padding-top: 10px;
+	text-shadow: 0 0 4px black;
+}
+
 ul {
 	display: block;
-	/*list-style-type: disc;*/
-	/*margin-top: 1em;*/
 	margin-bottom: 1 em;
 	margin-left: 15px;
 	margin-right: 10px;
-	/*padding-left: 40px;*/
 	font-size: 35px;
 }
 
@@ -155,15 +190,14 @@ li {
 }
 
 li2 {
-	/*padding-bottom: 50px;*/
-	padding-top: 5px;
+	padding-top: 2px;
+	padding-bottom: 2px;
 	padding-right: 10px;
 }
 
 .inner {
 	width:1270px;
 	margin:0 auto;
-
 	position: relative;
 	height:100%;
 	padding-bottom: 20px;
@@ -185,15 +219,28 @@ li2 {
 	line-height:1.8;
 }
 .panel .content h2 {
-	margin-bottom:30px;
-	font-size:3em;
+	margin-bottom:5px;
+	font-size:30px;
 	color:#555;
 }
 .panel.home {
 	background-color:#f0f2f4;
 	/*background-color:#282828;*/
-	border-bottom:1px solid #ddd;
+	color: #f0f2f4;
 }
+
+.panel.info3 {
+	/*background-color: red;*/
+	background-image: url(../img/colorado.jpg);
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.8;
+
+	color: white;
+}
+
 .home .header-content {
 	position: absolute;
 	left:50px;
@@ -201,10 +248,14 @@ li2 {
 	width:25%;
 }
 
-.footer {
+/*.footer-subtitle {
 	position: absolute;
 	left:50px;
 	bottom:50px;
+}*/
+
+.footer p {
+	font-size: 24px;
 }
 
 .footer-left {
@@ -222,7 +273,7 @@ li2 {
 
 /*.background-img {*/
 	/*position: relative;*/
-	/*!*z-index: -1;*!*/
+	/*z-index: -1;*/
 /*}*/
 
 .home .gallery0 {
@@ -280,62 +331,6 @@ li2 {
 	right:4px;
 	bottom:0;
 }
-
-
-/*.pagination {*/
-	/*position:fixed;*/
-	/*top:0;*/
-	/*bottom:0;*/
-	/*right:20px;*/
-	/*height:90px;*/
-	/*margin:auto;*/
-	/*font-size:1.2em;*/
-	/*z-index: 10;*/
-	/*display: block;*/
-/*}*/
-/*.pagination a {*/
-	/*display:block;*/
-	/*width:80px;*/
-	/*height:13px;*/
-	/*border-radius:50%;*/
-
-	/*color:#aaa;*/
-	/*position:relative;*/
-	/*padding:4px;*/
-/*}*/
-/*.pagination a.active:after {*/
-	/*background:transparent;*/
-	/*border:1px solid #aaa;*/
-	/*width:8px;*/
-	/*height:8px;*/
-	/*right:0;*/
-/*}*/
-/*.pagination a .hover-text {*/
-	/*position:absolute;*/
-	/*right:20px;*/
-	/*top:5px;*/
-	/*opacity:0;*/
-	/*-webkit-transition: opacity 0.5s ease;*/
-	/*transition: opacity 0.5s ease;*/
-/*}*/
-/*.pagination a:hover .hover-text {*/
-	/*opacity: 1;*/
-/*}*/
-/*.pagination a:after {*/
-	/*width:4px;*/
-	/*height:4px;*/
-
-	/*display: block;*/
-	/*background:#aaa;*/
-	/*border-radius:50%;*/
-	/*content:'';*/
-	/*position: absolute;*/
-	/*margin:auto;*/
-	/*top:0;*/
-	/*right:4px;*/
-	/*bottom:0;*/
-
-/*}*/
 
 .design .content {
 	position: absolute;
@@ -495,12 +490,18 @@ li2 {
 a:link,
 a:visited {
 	color:#666;
+	/*color:white;*/
 	text-decoration:none;
-
 }
+
 a:hover {
 	text-decoration: underline;
 }
+
+a2:link {
+	color:white;
+}
+
 .arrow {
 	position: relative;
 	padding-right:15px;
@@ -580,6 +581,16 @@ a:hover {
 	align-content: center;
 }
 
+.img-container {
+	/*margin-left: 20px;*/
+	/*margin-top: 30px;*/
+	width: 100%;
+	padding-left: 22%;
+	padding-top: 25px;
+	/*align-content: center;*/
+	/*horiz-align: center;*/
+}
+
 .video-container {
 	margin-left: 20px;
 	margin-top: 30px;
@@ -593,7 +604,7 @@ a:hover {
 	width: 540px;
 	height: 315px;
 	padding-top: 5px;
-	box-shadow: 0 0 20px rgba(145, 27, 27, 0.8);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
 .slideshow-container {
@@ -609,7 +620,7 @@ a:hover {
 	width: 540px;
 	height: 315px;
 	padding-top: 5px;
-	box-shadow: 0 0 20px rgba(145, 27, 27, 0.8);
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
 }
 
 /* Memoriam */
@@ -661,4 +672,28 @@ a:hover {
 	font-size: 30px;
 	color: #E50000;
 	font-weight: 600;
+}
+
+table {
+	margin-top: 90px;
+	visibility: hidden;
+}
+th, td {
+
+	padding: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+#link {
+	font-size: 16px;
+	color: black;
+
+}
+
+#tlabels {
+	font-size: 14px;
+}
+
+#date, #location {
+	color: black;
 }

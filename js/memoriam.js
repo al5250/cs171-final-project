@@ -26,7 +26,7 @@ Memoriam.prototype.initVis = function(){
 
     vis.margin = { top: 0, right: 100, bottom: 100, left: 0 };
 
-    vis.diameter = 500;
+    vis.diameter = 400;
 
 
     // SVG drawing area
@@ -70,6 +70,8 @@ Memoriam.prototype.initVis = function(){
             }
         }
     });
+
+    console.log(vis.displayData);
 
     vis.displayData = vis.displayData.filter(function(d) {
         return d.age > 0;

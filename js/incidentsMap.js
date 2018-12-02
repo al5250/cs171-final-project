@@ -9,7 +9,8 @@
 IncidentsMap = function(_parentElement, _data){
     this.parentElement = _parentElement;
     this.allData = _data;
-    this.displayData = []; // see data wrangling
+    this.displayData = [];
+    this.tooltipData = [];// see data wrangling
 
     this.initVis();
 };
@@ -23,10 +24,10 @@ IncidentsMap = function(_parentElement, _data){
 IncidentsMap.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 80, right: 100, bottom: 80, left: 0 };
+    vis.margin = { top: 15, right: 100, bottom: 80, left: 0 };
 
     vis.width = 900 - vis.margin.left - vis.margin.right;
-    vis.height = 500 - vis.margin.top - vis.margin.bottom;
+    vis.height = 520 - vis.margin.top - vis.margin.bottom;
 
 
     // SVG drawing area
@@ -37,7 +38,8 @@ IncidentsMap.prototype.initVis = function(){
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
     vis.projection = d3.geoAlbersUsa()
-        .translate([vis.width / 2, vis.height / 2]);
+        .translate([vis.width / 2, vis.height / 2])
+        .scale(1000);
 
     vis.path = d3.geoPath()
         .projection(vis.projection);
@@ -72,12 +74,20 @@ IncidentsMap.prototype.initVis = function(){
         .title("Number of deaths")
         .titleWidth(200);
 
+    vis.tool_tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<p><strong>Date of Shooting:</strong> <span style='color:red'>" + (d.date).toDateString() + "</span></p></br><p><strong>City or County: </strong><span style='color:red'>" + d.city_or_county + "</span></p></br><p><strong>Link to Incident: </strong><span style = 'color:red'>" + d.incident_url + "</span></p>";
+        });
+    vis.svg.call(vis.tool_tip);
+
     d3.json('data/us.topo.json', function(err, data) {
-        console.log(data);
         vis.usData = topojson.feature(data, data.objects.states).features;
         vis.wrangleData();
 
     });
+
 };
 
 /*
@@ -144,8 +154,6 @@ IncidentsMap.prototype.updateVis = function(){
 
     }
 
-    console.log(vis.usData);
-
     vis.svg.selectAll("path")
         .data(vis.usData)
         .enter().append("path")
@@ -167,8 +175,18 @@ IncidentsMap.prototype.updateVis = function(){
         })
         .style("fill", function(d) {
             return "#a50f15";
+        })
+        .on('click', function(d) {
+            d3.select("table").style("visibility", "visible");
+            d3.select("#date")
+                .text((d.date).toDateString());
+
+            d3.select("#location")
+                .text(d.city_or_county);
+
+            $("a").attr("href", d.incident_url);
         });
-        // .style("stroke", "#760b0f");
+
     circles.exit().remove();
 
 
