@@ -120,7 +120,7 @@ Memoriam.prototype.wrangleData = function(){
 
     vis.group2 = d3.select('div#slider2').append('svg')
         .attr('width', 500)
-        .attr('height', 100)
+        .attr('height', 75)
         .attr("class", "center")
         .append('g')
         .attr('transform', 'translate(30,30)');

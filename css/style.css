@@ -1,12 +1,5 @@
 /* custom css rules */
 
-/*body {*/
-/*font-family: 'Raleway', sans-serif;*/
-/*}*/
-
-/*h1 {*/
-/*}*/
-
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
    License: none (public domain)
@@ -81,17 +74,6 @@ ol, ul {
 	list-style: none;
 }
 
-/*ul.no_bullet {*/
-	/*list-style-type: none;*/
-/*}*/
-
-/*ul.leaf {*/
-	/*background: url('/img/gun.jpg') no-repeat left top;*/
-	/*height: 54px;*/
-	/*padding-left: 44px;*/
-	/*padding-top: 3px;*/
-/*}*/
-
 blockquote, q {
 	quotes: none;
 }
@@ -109,8 +91,6 @@ table {
 
 body {
 	font-size:62.5%;
-	/*font-family:"Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
-	/*font-family: 'Open Sans', sans-serif;*/
 	font-family: 'Raleway', sans-serif;
 	color:#808080;
 }
@@ -118,18 +98,16 @@ body {
 h1 {
 	font-size:8em;
 	color:#555;
-	/*font-family:"Lato", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
-	/*font-family: 'Open Sans', sans-serif;*/
 	font-family: 'Raleway', sans-serif;
 }
 
 h2 {
-	/*font-family:"Lato", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;*/
-	/*font-family: 'Open Sans', sans-serif;*/
+    color:#555;
 	font-family: 'Raleway', sans-serif;
 }
 
 p {
+    color:#555;
 	font-size: 14px;
 }
 
@@ -164,6 +142,7 @@ p1 {
 	padding-top: 60px;
 	font-weight: bold;
 	text-shadow: 0 0 4px black;
+    color: white;
 }
 
 .subquote p {
@@ -173,6 +152,7 @@ p1 {
 	padding-right: 50px;
 	padding-top: 10px;
 	text-shadow: 0 0 4px black;
+    color: white;
 }
 
 ul {
@@ -187,6 +167,12 @@ li {
 	padding-bottom: 35px;
 	padding-top: 20px;
 	padding-right: 10px;
+}
+
+.info4 li {
+	padding: 50px;
+	padding-bottom: 40px;
+	padding-top: 100px;
 }
 
 li2 {
@@ -225,13 +211,22 @@ li2 {
 }
 .panel.home {
 	background-color:#f0f2f4;
-	/*background-color:#282828;*/
 	color: #f0f2f4;
 }
 
 .panel.info3 {
-	/*background-color: red;*/
 	background-image: url(../img/colorado.jpg);
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	opacity: 0.8;
+
+	color: white;
+}
+
+.panel.info4 {
+	background-image: url(../img/sandyhook.jpg);
 	width: 100%;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -248,13 +243,13 @@ li2 {
 	width:25%;
 }
 
-/*.footer-subtitle {
+.footer-subtitle {
 	position: absolute;
 	left:50px;
 	bottom:50px;
-}*/
+}
 
-.footer p {
+.footer-subtitle p {
 	font-size: 24px;
 }
 
@@ -270,11 +265,10 @@ li2 {
 	bottom:30px;
 }
 
-
-/*.background-img {*/
-	/*position: relative;*/
-	/*z-index: -1;*/
-/*}*/
+.footer-right p1 {
+    color: white;
+    font-size: 14px;
+}
 
 .home .gallery0 {
 	position: absolute;
@@ -392,7 +386,6 @@ li2 {
 	top:10%;
 }
 .features .gallery1 {
-	/*left:275px;*/
 	left:0;
 	top:250px;
 
@@ -527,7 +520,6 @@ a2:link {
 }
 
 /* Incidents Map */
-
 .country-border {
 	fill: gainsboro;
 	stroke: #000000;
