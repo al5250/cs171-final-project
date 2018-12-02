@@ -102,8 +102,6 @@ BarPlot.prototype.wrangleData = function(){
         'numInjuredByAge': numInjuredByAge
     };
 
-    console.log(vis.displayData);
-
     // Set domain of y axis
     vis.y.domain([0, d3.max(vis.displayData.numInjuredByAge)])
 

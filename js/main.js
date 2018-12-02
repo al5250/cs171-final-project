@@ -1,12 +1,12 @@
 allData = [];
 
-var dataset = "data/stage3-min.csv";
+var dataset = "data/gun-violence-min.csv";
 
 // Load data
 loadData();
 
 // Date parser to convert strings to date objects
-var parseDate = (dataset === "data/stage3-min.csv")? d3.timeParse("%m/%d/%Y") : d3.timeParse("%Y-%m-%d");
+var parseDate = (dataset === "data/stage3.csv")? d3.timeParse("%Y-%m-%d") : d3.timeParse("%m/%d/%Y");
 
 function loadData() {
     d3.csv(dataset, function(error, data){
