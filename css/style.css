@@ -680,3 +680,12 @@ a2:link {
 	color: #E50000;
 	font-weight: 600;
 }
+
+.area {
+	opacity: 0.7;
+	clip-path: url(#clip);
+}
+
+.area:hover {
+	opacity: 1;
+}

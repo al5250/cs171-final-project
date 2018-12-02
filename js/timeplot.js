@@ -76,22 +76,22 @@ TimePlot.prototype.initVis = function(){
 
     // Add legend
     vis.svg.append('circle')
-        .attr('cx', 100)
+        .attr('cx', 400)
         .attr('cy', 20)
         .attr('r', 4)
         .attr('fill', '#B22222');
     vis.svg.append('circle')
-        .attr('cx', 100)
+        .attr('cx', 400)
         .attr('cy', 40)
         .attr('r', 4)
         .attr('fill', 'black');
     vis.svg.append('text')
-        .attr('x', 110)
+        .attr('x', 410)
         .attr('y', 20)
         .attr('class', 'legend-text')
         .text('Killed');
     vis.svg.append('text')
-        .attr('x', 110)
+        .attr('x', 410)
         .attr('y', 40)
         .attr('class', 'legend-text')
         .text('Injured');

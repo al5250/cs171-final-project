@@ -3,6 +3,7 @@ StackedAreaChart = function(_parentElement, _data){
     this.allData = _data;
     this.displayData = []; // see data wrangling
     this.dataCategories = [
+        'Non-Shooting Incident', 'Shots Fired - No Injuries',
         'Accidental Shooting - Death', 'Accidental Shooting - Injury', 'Defensive Use',
         'Domestic Violence', 'Home Invasion',
         'Mass Shooting (4+ victims injured or killed excluding the subject/suspect/perpetrator, one location)'
@@ -17,7 +18,7 @@ StackedAreaChart.prototype.initVis = function(){
     vis.margin = { top: 50, right: 60, bottom: 50, left: 100 };
 
     vis.width = 1200 - vis.margin.left - vis.margin.right;
-    vis.height = 500 - vis.margin.top - vis.margin.bottom;
+    vis.height = 400 - vis.margin.top - vis.margin.bottom;
 
 
     // SVG drawing area
@@ -55,7 +56,13 @@ StackedAreaChart.prototype.initVis = function(){
         .attr('class', 'y-label')
         .style("text-anchor", "middle")
         .text('Number of Incidents');
-    
+
+    // Add tooltip text
+    vis.svg.append("text")
+        .attr("x", 30)
+        .attr("y", -20)
+        .attr("id", "cat-text");
+
     // Initialize stack layout
     vis.stack = d3.stack()
         .keys(vis.dataCategories);
@@ -112,7 +119,6 @@ StackedAreaChart.prototype.wrangleData = function(){
         }
         return obj;
     })
-    console.log(vis.displayData);
 
     // Set domain of x axis
     vis.x.domain([
@@ -148,7 +154,6 @@ StackedAreaChart.prototype.updateVis = function(){
             return e[1];
         });
     })]);
-    console.log(vis.displayData);
 
     // Draw the layers
     var categories = vis.svg.selectAll(".area")
@@ -164,6 +169,11 @@ StackedAreaChart.prototype.updateVis = function(){
             return vis.area(d);
         });
 
+    areas.on('mouseover', function(d) {
+        vis.svg.select('#cat-text')
+            .text(d.key);
+    });
+
     categories.exit().remove();
 
     vis.svg.append("defs").append("clipPath")
@@ -172,10 +182,10 @@ StackedAreaChart.prototype.updateVis = function(){
         .attr("width", vis.width)
         .attr("height", vis.height);
 
-    // Draw axes
+    // Call axis functions with the new domain
     vis.svg.select('.x-axis')
         .call(vis.xAxis
-            .ticks(d3.timeMonth.every(3))
+            .ticks(d3.timeMonth.every(1))
             .tickFormat(d3.timeFormat("%b %Y")))
         .selectAll('text')
         .attr("y", 0)
