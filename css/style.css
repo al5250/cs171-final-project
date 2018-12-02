@@ -681,6 +681,7 @@ a2:link {
 	font-weight: 600;
 }
 
+<<<<<<< HEAD
 .area {
 	opacity: 0.7;
 	clip-path: url(#clip);
@@ -688,4 +689,28 @@ a2:link {
 
 .area:hover {
 	opacity: 1;
+}
+
+table {
+	margin-top: 90px;
+	visibility: hidden;
+}
+th, td {
+
+	padding: 15px;
+	border-bottom: 1px solid #ddd;
+}
+
+#link {
+	font-size: 16px;
+	color: black;
+
+}
+
+#tlabels {
+	font-size: 14px;
+}
+
+#date, #location {
+	color: black;
 }

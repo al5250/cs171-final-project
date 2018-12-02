@@ -71,6 +71,8 @@ Memoriam.prototype.initVis = function(){
         }
     });
 
+    console.log(vis.displayData);
+
     vis.displayData = vis.displayData.filter(function(d) {
         return d.age > 0;
     });

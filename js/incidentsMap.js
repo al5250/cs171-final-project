@@ -9,7 +9,8 @@
 IncidentsMap = function(_parentElement, _data){
     this.parentElement = _parentElement;
     this.allData = _data;
-    this.displayData = []; // see data wrangling
+    this.displayData = [];
+    this.tooltipData = [];// see data wrangling
 
     this.initVis();
 };
@@ -25,7 +26,7 @@ IncidentsMap.prototype.initVis = function(){
 
     vis.margin = { top: 15, right: 100, bottom: 80, left: 0 };
 
-    vis.width = 1100 - vis.margin.left - vis.margin.right;
+    vis.width = 900 - vis.margin.left - vis.margin.right;
     vis.height = 520 - vis.margin.top - vis.margin.bottom;
 
 
@@ -62,7 +63,7 @@ IncidentsMap.prototype.initVis = function(){
     // Legend
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(900,100)");
+        .attr("transform", "translate(720,250)");
 
     vis.legend = d3.legendSize()
         .labelFormat(d3.format("d"))
@@ -73,11 +74,20 @@ IncidentsMap.prototype.initVis = function(){
         .title("Number of deaths")
         .titleWidth(200);
 
+    vis.tool_tip = d3.tip()
+        .attr('class', 'd3-tip')
+        .offset([-10, 0])
+        .html(function(d) {
+            return "<p><strong>Date of Shooting:</strong> <span style='color:red'>" + (d.date).toDateString() + "</span></p></br><p><strong>City or County: </strong><span style='color:red'>" + d.city_or_county + "</span></p></br><p><strong>Link to Incident: </strong><span style = 'color:red'>" + d.incident_url + "</span></p>";
+        });
+    vis.svg.call(vis.tool_tip);
+
     d3.json('data/us.topo.json', function(err, data) {
         vis.usData = topojson.feature(data, data.objects.states).features;
         vis.wrangleData();
 
     });
+
 };
 
 /*
@@ -137,11 +147,19 @@ IncidentsMap.prototype.updateVis = function(){
     vis.svg.select(".legend")
         .call(vis.legend);
 
+    function stateclick(d) {
+        d3.select("table").style("display", "table");
+        d3.select("#state")
+            .text(d.id);
+
+    }
+
     vis.svg.selectAll("path")
         .data(vis.usData)
         .enter().append("path")
         .attr("class", "country-border")
-        .attr("d", vis.path);
+        .attr("d", vis.path)
+        .on("click", stateclick);
 
     var circles = vis.svg.selectAll(".node")
         .data(vis.displayData, function(d) { return d.incident_id; });
@@ -157,8 +175,18 @@ IncidentsMap.prototype.updateVis = function(){
         })
         .style("fill", function(d) {
             return "#a50f15";
+        })
+        .on('click', function(d) {
+            d3.select("table").style("visibility", "visible");
+            d3.select("#date")
+                .text((d.date).toDateString());
+
+            d3.select("#location")
+                .text(d.city_or_county);
+
+            $("a").attr("href", d.incident_url);
         });
-        // .style("stroke", "#760b0f");
+
     circles.exit().remove();
 
 
