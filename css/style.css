@@ -129,26 +129,50 @@ h2 {
 	font-family: 'Raleway', sans-serif;
 }
 
-p1 {
-	font-size: 24px;
-}
-
 p {
 	font-size: 14px;
 }
 
-/*.subtitle p {*/
-	/*font-size: 24px;*/
-/*}*/
+p1 {
+	font-size: 24px;
+}
+
+.text p {
+	font-size: 30px;
+	padding: 30px;
+	padding-bottom: 10px;
+}
+
+.text p1 {
+	font-size: 24px;
+	padding-left: 75%;
+	padding-right: 30px;
+	padding-bottom: 10px;
+	text-align: right;
+}
+
+.subtitle p {
+	font-size: 24px;
+}
 
 .quote p {
-	font-size: 50px;
+	font-size: 30px;
 	align-content: center;
 	align-text: center;
-	padding: 100px;
-	padding-top: 70px;
+	padding-left: 50px;
+	padding-right: 50px;
+	padding-top: 60px;
 	font-weight: bold;
+	text-shadow: 0 0 4px black;
+}
 
+.subquote p {
+	font-size: 20px;
+	align-text: right;
+	padding-left: 150px;
+	padding-right: 50px;
+	padding-top: 10px;
+	text-shadow: 0 0 4px black;
 }
 
 ul {
@@ -195,8 +219,8 @@ li2 {
 	line-height:1.8;
 }
 .panel .content h2 {
-	margin-bottom:30px;
-	font-size:3em;
+	margin-bottom:5px;
+	font-size:30px;
 	color:#555;
 }
 .panel.home {
@@ -224,11 +248,11 @@ li2 {
 	width:25%;
 }
 
-.footer {
+/*.footer-subtitle {
 	position: absolute;
 	left:50px;
 	bottom:50px;
-}
+}*/
 
 .footer p {
 	font-size: 24px;
@@ -466,6 +490,7 @@ li2 {
 a:link,
 a:visited {
 	color:#666;
+	/*color:white;*/
 	text-decoration:none;
 }
 
@@ -473,9 +498,9 @@ a:hover {
 	text-decoration: underline;
 }
 
-/*.href a {*/
-	/*color:white;*/
-/*}*/
+a2:link {
+	color:white;
+}
 
 .arrow {
 	position: relative;
@@ -554,6 +579,16 @@ a:hover {
 
 .col-md-6 {
 	align-content: center;
+}
+
+.img-container {
+	/*margin-left: 20px;*/
+	/*margin-top: 30px;*/
+	width: 100%;
+	padding-left: 22%;
+	padding-top: 25px;
+	/*align-content: center;*/
+	/*horiz-align: center;*/
 }
 
 .video-container {

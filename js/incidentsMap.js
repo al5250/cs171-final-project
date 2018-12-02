@@ -23,10 +23,10 @@ IncidentsMap = function(_parentElement, _data){
 IncidentsMap.prototype.initVis = function(){
     var vis = this;
 
-    vis.margin = { top: 80, right: 100, bottom: 80, left: 0 };
+    vis.margin = { top: 15, right: 100, bottom: 80, left: 0 };
 
-    vis.width = 1000 - vis.margin.left - vis.margin.right;
-    vis.height = 500 - vis.margin.top - vis.margin.bottom;
+    vis.width = 1100 - vis.margin.left - vis.margin.right;
+    vis.height = 520 - vis.margin.top - vis.margin.bottom;
 
 
     // SVG drawing area
@@ -37,7 +37,8 @@ IncidentsMap.prototype.initVis = function(){
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
     vis.projection = d3.geoAlbersUsa()
-        .translate([vis.width / 2, vis.height / 2]);
+        .translate([vis.width / 2, vis.height / 2])
+        .scale(1000);
 
     vis.path = d3.geoPath()
         .projection(vis.projection);
@@ -61,7 +62,7 @@ IncidentsMap.prototype.initVis = function(){
     // Legend
     vis.svg.append("g")
         .attr("class", "legend")
-        .attr("transform", "translate(820,250)");
+        .attr("transform", "translate(900,100)");
 
     vis.legend = d3.legendSize()
         .labelFormat(d3.format("d"))
