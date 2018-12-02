@@ -33,7 +33,7 @@ Memoriam.prototype.initVis = function(){
     vis.svg = d3.select("#" + vis.parentElement).append("svg")
         .attr("width", vis.diameter)
         .attr("height", vis.diameter)
-        .attr("class", "bubble")
+        .attr("class", "bubble center")
         .append("g")
         .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")")
         .attr("class", "bubble");
@@ -42,18 +42,27 @@ Memoriam.prototype.initVis = function(){
         .attr('class', 'd3-tip')
         .offset([-10, 0])
         .html(function(d) {
-            return "<strong>Age:</strong> <span style='color:red'>" + d.data.age + "</span>";
+            return "<p><strong>Name:</strong> <span style='color:red'>" + d.data.name +"</span></p><br><p><strong>Age:</strong> <span style='color:red'>" + d.data.age + "</span></p>";
         });
     vis.svg.call(vis.tool_tip);
 
+    var deaths_dict = {};
+    deaths_dict[0] = 0;
 
     this.allData.forEach(function(d, i) {
         if (d.n_killed > 0) {
             for (var k in d.participant_status_dict) {
                 if (d.participant_status_dict[k] === "Killed") {
-                    var age = k in d.participant_age_dict ? d.participant_age_dict[k] : 0;
+                    var age = k in d.participant_age_dict ? d.participant_age_dict[k] : -1;
+                    var name = k in d.participant_name_dict ? d.participant_name_dict[k] : "";
+
+                    if (age > 0) {
+                        if (age in deaths_dict) deaths_dict[age] += 1;
+                        else deaths_dict[age] = 1;
+                    }
                     vis.displayData.push({
                         'age': age,
+                        'name': name,
                         'id': i,
                         'incident_id': +d.incident_id
                     });
@@ -65,7 +74,14 @@ Memoriam.prototype.initVis = function(){
     vis.displayData = vis.displayData.filter(function(d) {
         return d.age > 0;
     });
-    console.log(d3.max(vis.displayData, function(d) { return d.age; }));
+
+    vis.maxage = d3.max(vis.displayData, function(d) { return d.age});
+
+    vis.total_deaths = [0];
+    for (var i = 1; i <= vis.maxage; i++) {
+        vis.total_deaths.push(vis.total_deaths[i-1] + (i in deaths_dict ? deaths_dict[i] : 0));
+    }
+
     console.log(vis.displayData);
 
     vis.userval = 0;
@@ -75,12 +91,20 @@ Memoriam.prototype.initVis = function(){
         .on('onchange', val => {
             d3.select('p#value2').text(parseInt(val));
             vis.userval = parseInt(val);
+            $("#value2").text(vis.userval);
+            $("#total-deaths").text(vis.total_deaths[vis.userval]);
             vis.deadcircles.attr("fill", function(d) {
                 if (d.data.age <= vis.userval) {
                     return "red";
                 }
             })
         });
+
+    vis.play_button = $("#memoriam-button");
+
+    vis.sleep = (milliseconds) => {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
+    };
 
     vis.wrangleData();
 };
@@ -97,6 +121,7 @@ Memoriam.prototype.wrangleData = function(){
     vis.group2 = d3.select('div#slider2').append('svg')
         .attr('width', 500)
         .attr('height', 100)
+        .attr("class", "center")
         .append('g')
         .attr('transform', 'translate(30,30)');
 
@@ -130,10 +155,9 @@ Memoriam.prototype.updateVis = function(){
 
         //bubbles needs very specific format, convert data to this.
 
-    var maxage = d3.max(vis.displayData, function(d) { return d.age});
 
     var root = d3.hierarchy(vis.testData)
-        .sum(function(d) { return maxage - d.age; });
+        .sum(function(d) { return vis.maxage - d.age; });
 
 
     vis.node = vis.svg.selectAll(".node")
@@ -154,16 +178,7 @@ Memoriam.prototype.updateVis = function(){
         .on('mouseout', function(d) {
             vis.tool_tip.attr('class', 'd3-tip').show(d)
             vis.tool_tip.hide()
-        })
-        // .on("mouseover", function(d) {
-        //     console.log("hi");
-        //     vis.tooltip.text("Age: " + d.data.age);
-        //     vis.tooltip.style("visibility", "visible");
-        // })
-        // .on("mousemove", function() {
-        //     return vis.tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");
-        // })
-        // .on("mouseout", function(){return vis.tooltip.style("visibility", "hidden");});
+        });
 
     // vis.deadcircles = vis.node.append("circle")
     //     .attr("r", function(d) {
@@ -172,3 +187,70 @@ Memoriam.prototype.updateVis = function(){
 
     d3.select(self.frameElement).style("height", vis.diameter + "px");
 };
+
+Memoriam.prototype.playMemoriam = function() {
+    var vis = this;
+
+    // reset circles to black and hide button and slider
+    vis.deadcircles
+        .attr("fill", function(d) {
+            return "black";
+        });
+    vis.play_button.hide();
+    vis.group2.style("visibility", "hidden");
+
+    recursiveHelper(0, 0);
+
+    function recursiveHelper(i, wait) {
+        if (i > vis.maxage) {
+            // show play button and slider
+            vis.play_button.show();
+            vis.group2.style("visibility", "visible");
+            return;
+        }
+        vis.sleep(wait).then(function() {
+            var transition = 0;
+            var val = i;
+            if (val < 4) {
+                wait = 0;
+                transition = 3000;
+            }
+            else if (val < 11) {
+                wait = 500;
+            }
+            else {
+                wait = 100;
+            }
+            $("#value2").text(val);
+            $("#total-deaths").text(vis.total_deaths[val]);
+
+            if (val < 4) {
+                var number = 0;
+                vis.deadcircles.transition()
+                    .attr("fill", function (d) {
+                        if (d.data.age <= val) return "red";
+                    })
+                    .attr("r", function (d) {
+                        if (d.data.age <= val) return 2.5 * d.r;
+                        return d.r;
+                    })
+                    .transition()
+                    .duration(transition)
+                    .on("start", function() { number += 1; })
+                    .on("end", function () {
+                        if (--number === 0) return recursiveHelper(i + 1, wait);
+                    })
+                    .attr("r", function (d) {
+                        return d.r;
+                    });
+            }
+            else {
+                vis.deadcircles
+                    .attr("fill", function (d) {
+                        if (d.data.age <= val) return "red";
+                    });
+                return recursiveHelper(i + 1, wait);
+            }
+        });
+    }
+}
