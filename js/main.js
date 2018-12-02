@@ -60,4 +60,19 @@ function createVis(data) {
         barplot.onSelectionChange(rangeStart, rangeEnd);
     });
 
+    stackedAreaChart = new StackedAreaChart("stackedareachart", data);
+    timeline = new Timeline("timeline", data);
+
+}
+
+function brushed() {
+    // Get the extent of the current brush
+    var selectionRange = d3.brushSelection(d3.select("#timeline-brush").node());
+
+    // Convert the extent into the corresponding domain values
+    var selectionDomain = selectionRange.map(timeline.x.invert);
+
+    // Update focus chart (detailed information)
+    stackedAreaChart.x.domain(selectionDomain);
+    stackedAreaChart.updateVis();
 }
