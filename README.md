@@ -16,10 +16,12 @@ Folders:
 	- memoriam.js: implementation of memoriam of victims of shootings
 	- timeplot.js: implementation of line chart showing number of injured/killed over time, linked to bar chart (barplot.js)
 	- barplot.js: implementation of bar chart depicting age group, linked to the line chart (timeplot.js)
+	- stackedarea.js: implementation of stacked area chart depicting breakdown of types of shootings, linked to the area chart (timeline.js)
+	- timelines.js: implementation of area chart depicting shootings over time, linked to the stacked area chart (stackedarea.js)
 	- all other files are from JS libraries
 - scrollify: files all from the Scrollify JS library 
 
-Project website:
+Project website: https://bear-arms.herokuapp.com/
 
 Screencast video:
 

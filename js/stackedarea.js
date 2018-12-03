@@ -188,10 +188,10 @@ StackedAreaChart.prototype.updateVis = function(){
             .ticks(d3.timeMonth.every(1))
             .tickFormat(d3.timeFormat("%b %Y")))
         .selectAll('text')
-        .attr("y", 0)
+        .attr("y", 5)
         .attr("x", -50)
         .attr("dy", ".35em")
-        .attr("transform", "rotate(-65)")
+        .attr("transform", "rotate(-45)")
         .style("text-anchor", "start");
     vis.svg.select('.y-axis')
         .call(vis.yAxis);

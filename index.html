@@ -31,9 +31,9 @@
                 <li2><a href="#map"><span class="hover-text">Incidents Map</span></a></li2>
                 <li2><a href="#info3"><span class="hover-text">Victims</span></a></li2>
                 <li2><a href="#memoriam"><span class="hover-text">Memoriam</span></a></li2>
-                <li2><a href="#info4"><span class="hover-text">Trends</span></a></li2>
-                <li2><a href="#stats"><span class="hover-text">Statistics</span></a></li2>
-                <li2><a href="#stats2"><span class="hover-text">Statistics 2</span></a></li2>
+                <li2><a href="#info4"><span class="hover-text">Uncovering Trends</span></a></li2>
+                <li2><a href="#stats"><span class="hover-text">Trends</span></a></li2>
+                <li2><a href="#stats2"><span class="hover-text">Trends Cont.</span></a></li2>
                 <li2><a href="#closing"><span class="hover-text">Closing</span></a></li2>
                 <li2><a href="#data"><span class="hover-text">The Data</span></a></li2>
                 <li2><a href="#screencast"><span class="hover-text">Screencast</span></a></li2>
@@ -72,109 +72,79 @@
                         <li>Between 1982 and April 2018, 99 mass shootings have occurred in the U.S.</li>
                         <li2>In 2017 alone, 11 mass shootings in the U.S. caused 117 fatalities and 587 injuries occurring in concert, religious, workplace, airport, and shopping venues and in the community.</li2>
                     </ul>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="video-container">
-                            <div id="video">
-                                <div>
-                                    <iframe width="530" height="305" src="https://www.youtube.com/embed/ih5_5-LtPP4?start=23" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="video-container">
+                                <div id="video">
+                                    <div>
+                                        <iframe width="530" height="305" src="https://www.youtube.com/embed/ih5_5-LtPP4?start=23" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="slideshow-container">
+                                <div id="slideshow">
+                                    <div>
+                                        <img src="img/orlando.png" width="530" height="305">
+                                    </div>
+                                    <div>
+                                        <img src="img/columbine.jpg" width="530" height="305">
+                                    </div>
+                                    <div>
+                                        <img src="img/thousandoaks.jpg" width="530" height="305">
+                                    </div>
+                                    <div>
+                                        <img src="img/texas.jpg" width="530" height="305">
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="slideshow-container">
-                            <div id="slideshow">
-                                <div>
-                                    <img src="img/orlando.png" width="530" height="305">
-                                </div>
-                                <div>
-                                    <img src="img/columbine.jpg" width="530" height="305">
-                                </div>
-                                <div>
-                                    <img src="img/thousandoaks.jpg" width="530" height="305">
-                                </div>
-                                <div>
-                                    <img src="img/texas.jpg" width="530" height="305">
-                                </div>
-                            </div>
-                        </div>
+
+                    <div class="footer-right">
+                        <p>Data from <a href="https://www.vox.com/2015/10/1/18000444/gun-crime-us-foreign-countries" target="_blank">Vox: "Gun crime is more prevalent in the US than in other rich countries"</a></p>
                     </div>
                 </div>
-
-                <div class="footer-right">
-                    <p>Data from <a href="https://www.vox.com/2015/10/1/18000444/gun-crime-us-foreign-countries" target="_blank">Vox: "Gun crime is more prevalent in the US than in other rich countries"</a></p>
-                </div>
             </div>
-            
-<section class="panel map" data-section-name="map">
-    <div class="inner">
-        <div class="content">
-            <h2>Where do these mass shootings occur?</h2>
-            <p>Below is a map of incidents of gun violence found in our dataset, with each circle representing one shooting and the size corresponding to number killed. Click on the circles to learn more about each incident.</p>
-            <div class="row align-items-center">
-                <div class="col-sm-2" id="sliderlabels">
-                    <span>Filter by Top:</span><p id="value1"></p><span>Lethal Incidents</span>
-                </div>
-                <div class="col-sm">
-                    <div id="slider1"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-9">
-                    <div id="incidents-map"></div>
-                </div>
-                <div class="col-md-3">
-                    <table>
-                        <tr>
-                            <th id="tlabels">Date of Shooting:  </th>
-                            <td id="date"></td>
-                        </tr>
-                        <tr>
-                            <th id="tlabels">City or County:  </th>
-                            <td id="location"></td>
-                        </tr>
-                        <tr>
-                            <th id="tlabels">Link to Incident:  </th>
-                            <td id="link"><a href="">Click Here</a></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
-            <p>Above is a map of incidents of gun violence found in our dataset, with each circle representing one shooting and the size corresponding to number killed.</p>
-
-        </div>
-    </div>
-</section>
-
-<section class="panel info3" data-section-name="info3">
-    <div class="inner">
-        <div class="content">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="quote">
-                        <p>“If we all stood up and said, 'enough is enough,' Alex would still be alive.”</p>
         </section>
-
+            
         <section class="panel map" data-section-name="map">
             <div class="inner">
                 <div class="content">
                     <h2>Where do these mass shootings occur?</h2>
-                    <p>Below is a map of incidents of gun violence found in our dataset, with each circle representing one shooting and the size corresponding to number killed. Toggle the scale to filter to the most lethal incidents.</p>
-                    <div class="container">
-                        <div class="row align-items-center">
-                            <div class="col-sm-2" id="sliderlabels">
-                                <span>Filter by Top:</span><p id="value1"></p><span>Lethal Incidents</span>
-                            </div>
-                            <div class="col-sm">
-                                <div id="slider1"></div>
-                            </div>
+                    <p>Below is a map of incidents of gun violence found in our dataset, with each circle representing one shooting and the size corresponding to number killed. Click on the circles to learn more about each incident.</p>
+                    <div class="row align-items-center">
+                        <div class="col-sm-2" id="sliderlabels">
+                            <span>Filter by Top:</span><p id="value1"></p><span>Lethal Incidents</span>
+                        </div>
+                        <div class="col-sm">
+                            <div id="slider1"></div>
                         </div>
                     </div>
-                    <div id="incidents-map"></div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div id="incidents-map"></div>
+                        </div>
+                        <div class="col-md-2">
+                            <table>
+                                <tr>
+                                    <th id="tlabels">Date of Shooting:  </th>
+                                    <td id="date"></td>
+                                </tr>
+                                <tr>
+                                    <th id="tlabels">City or County:  </th>
+                                    <td id="location"></td>
+                                </tr>
+                                <tr>
+                                    <th id="tlabels">Link to Incident:  </th>
+                                    <td id="link"><a href="">Click Here</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -205,6 +175,7 @@
                         <p1>Data from <a2 href="https://www.theguardian.com/us-news/ng-interactive/2017/nov/14/stories-of-loss-love-and-hope-six-firsthand-accounts-from-some-of-americas-worst-mass-shootings" target="_blank">The Guardian: "Stories of loss, love and hope"</a2></p1>
                     </div>
                 </div>
+            </div>
         </section>
 
         <section class="panel memoriam" data-section-name="memoriam">
@@ -250,7 +221,7 @@
         <section class="panel stats" data-section-name="stats">
             <div class="inner">
                 <div class="content">
-                    <h2>Trends Over Time</h2>
+                    <h2>Number Affected Over Time</h2>
                     <p>The following shows the number of people affected in mass shootings over the years. Brush over the left line graph to filter the data to a specific time window.</p>
                     <div class="row">
                         <div class="col-md-6">
@@ -267,7 +238,8 @@
         <section class="panel stats2" data-section-name="stats2">
             <div class="inner">
                 <div class="content">
-                    <h2>Trends Over Time</h2>
+                    <h2>Types of Shootings Over Time</h2>
+                    <p>The following shows the breakdown of types of gun violence over the years. Brush over the left line graph to filter the data to a specific time window.</p>
                     <div id="stackedareachart"></div>
                     <div id="timeline"></div>
                 </div>

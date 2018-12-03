@@ -26,7 +26,7 @@ Memoriam.prototype.initVis = function(){
 
     vis.margin = { top: 0, right: 100, bottom: 100, left: 0 };
 
-    vis.diameter = 420;
+    vis.diameter = 400;
 
 
     // SVG drawing area
