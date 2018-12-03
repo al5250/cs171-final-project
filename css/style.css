@@ -713,3 +713,7 @@ th, td {
 #date, #location {
 	color: black;
 }
+
+.screencast-container {
+	padding-left: 15%;
+}

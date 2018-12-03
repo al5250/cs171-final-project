@@ -23,7 +23,7 @@ Folders:
 
 Project website: https://bear-arms.herokuapp.com/
 
-Screencast video:
+Screencast video: https://www.youtube.com/watch?v=_90Fep_S-fo
 
 Non-obvious features:
 - Users can navigate through the different pages of our website by scrolling, hitting the up/down arrows, and also by clicking on the dots on the right side of the website. Hovering over the dots also shows the titles of each page on the website.
